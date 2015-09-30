@@ -48,10 +48,11 @@ try:
 
         posts = r.get_subreddit('chunky').get_new(limit=10)
 
-        image = re.compile('^http://((www|i).)?imgur.com/')
+        imgur = re.compile('^http://((www|i).)?imgur.com/')
+        deviantart = re.compile('^http://\S+.deviantart.(com|net)/')
 
         for p in posts:
-            if not p.link_flair_text and image.match(p.url):
+            if not p.link_flair_text and (imgur.match(p.url) or deviantart.match(p.url)):
                 print "Setting render flair for \"%s\"" % p.title.encode('utf-8')
                 print p.set_flair('render', 'render')
     else:
