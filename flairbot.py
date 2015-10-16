@@ -57,7 +57,8 @@ try:
                 print p.set_flair('render', 'render')
     else:
         # Get new access token for OAuth.
-        rand_str = string.join(random.choice(string.lowercase + string.digits) for i in range(10))
+        chars = string.uppercase + string.lowercase + string.digits
+        rand_str = ''.join(random.choice(chars) for i in range(10))
         url = r.get_authorize_url(rand_str, 'read modflair', True)
         print url
         code = raw_input("enter access code:")
