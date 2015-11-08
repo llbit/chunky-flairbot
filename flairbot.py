@@ -48,8 +48,8 @@ try:
 
         posts = r.get_subreddit('chunky').get_new(limit=10)
 
-        imgur = re.compile('^http://((www|i).)?imgur.com/')
-        deviantart = re.compile('^http://\S+.deviantart.(com|net)/')
+        imgur = re.compile('^http://((www|i)\.)?imgur\.com/')
+        deviantart = re.compile('^http://\S+\.deviantart\.(com|net)/')
 
         for p in posts:
             if not p.link_flair_text and (imgur.match(p.url) or deviantart.match(p.url)):
